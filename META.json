@@ -1,0 +1,12 @@
+{
+    "perl" : "6.d",
+    "name" : "HomoGlypher",
+    "version" : "1.0.0",
+    "description" : "Toolset for handling similarly looking characters in strings.",
+    "authors" : [ "Paweł bbkr Pabian" ],
+    "provides" : {
+        "GeoIP2" : "lib/HomoGlypher.pm"
+    },
+    "license" : "Artistic-2.0",
+    "source-url" : "git://github.com/bbkr/HomoGlypher.git"
+}
