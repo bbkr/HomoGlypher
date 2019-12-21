@@ -1,6 +1,7 @@
 # Homoglyph toolset for [Raku](https://www.raku.org) language
 
 [Homoglyph](https://en.wikipedia.org/wiki/Homoglyph) is set of one or more graphemes that has identical or very similar look to some other set of graphemes.
+
 For example:
 
  * `6` (DIGIT SIX) and `б` (CYRILLIC SMALL LETTER BE)
