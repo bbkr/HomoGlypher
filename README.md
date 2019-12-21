@@ -9,4 +9,9 @@ For example:
  * `E` (LATIN CAPITAL LETTER E) and `Ε` (GREEK CAPITAL LETTER EPSILON) and `Е` (CYRILLIC CAPITAL LETTER IE)
  * `V` (LATIN CAPITAL LETTER V) and `\/` (REVERSE SOLIDUS + SOLIDUS)
 
-Homoglyphs are funny and dangerous at the same time. 
+Homoglyphs are:
+
+* Font dependent - two homoglyphs may be 100% identical in one font but have visual differences when rendered in other.
+* Subjective - similarity level cannot be measured and there is no fixed point where two sets of graphemes stops being homoglyphs. Are `a` and `а` homoglyphs? Sure! How about `ź` and `ž`? Probably yes. What will you say about `R` and `Я`? Er.... You see the point.
+* Funny - replace `;` (SEMICOLON) with `;` (GREEK QUESTION MARK) in someone's code and watch them trying to debug code that looks perfectly fine :)
+* Dangerous - someone can register [IDN domain](https://en.wikipedia.org/wiki/Internationalized_domain_name) that looks very similar to your business domain to swindle money out of your clients.
