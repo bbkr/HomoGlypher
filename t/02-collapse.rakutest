@@ -1,0 +1,34 @@
+use lib 'lib';
+
+use Test;
+use HomoGlypher;
+
+plan 6;
+
+my %digits = (
+    '6' => [ 'б' ]
+);
+
+my %ascii-art = (
+    'V' => [ '\/' ],
+    'W' => [ '\/\/' ]
+);
+
+my %cyrillic = (
+    'a' => [ 'а' ],
+    'b' => [ 'б', 'ь' ],
+);
+
+my $hg = HomoGlypher.new;
+
+is $hg.collapse( 'foo' ), ( ), 'no antimappings';
+
+$hg.add-mapping( %digits );
+$hg.add-mapping( %ascii-art );
+$hg.add-mapping( %cyrillic );
+
+is $hg.collapse( '' ), ( ), 'empty string';
+is $hg.collapse( 'foo' ), ( ), 'no matches in antimappings';
+is $hg.collapse( 'ьаr' ), 'bar', 'single characters matches in anitmappings';
+is-deeply $hg.collapse( 'бб' ), ( '66', '6b', 'b6', 'bb' ), 'single character opaque matches in antimappings';
+is-deeply $hg.collapse( '\/\/\/\/' ), ( 'VVVV', 'VVW', 'VWV', 'WVV', 'WW' ), 'multi character overlapping matches in antimappings';

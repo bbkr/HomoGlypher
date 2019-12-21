@@ -1,0 +1,29 @@
+use lib 'lib';
+
+use Test;
+use HomoGlypher;
+
+plan 6;
+
+my %cyrillic = (
+    'a' => [ 'а' ],
+    'b' => [ 'б', 'ь' ],
+    'io' => [ 'ю' ]
+);
+
+my %myanmar = (
+    'oo' => [ 'က']
+);
+
+my $hg = HomoGlypher.new;
+
+is $hg.unwind( 'foo' ), ( ), 'no mappings';
+
+$hg.add-mapping( %cyrillic );
+$hg.add-mapping( %myanmar );
+
+is $hg.unwind( '' ), ( ), 'empty string';
+is $hg.unwind( 'x' ), ( ), 'no matches in mappings';
+is-deeply $hg.unwind( 'bar' ), ( 'bаr',  'бar',  'баr',  'ьar',  'ьаr' ), 'single characters matches in mappings';
+is-deeply $hg.unwind( 'ioio' ), ( 'ioю', 'юio', 'юю' ), 'multi characters matches in mappings';
+is-deeply $hg.unwind( 'ioooo' ), ( 'iooက', 'ioကo', 'iကoo', 'iကက', 'юooo', 'юoက', 'юကo' ), 'multi characters overlapping matches in mappings';

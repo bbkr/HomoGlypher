@@ -1,0 +1,38 @@
+use lib 'lib';
+
+use Test;
+use HomoGlypher;
+
+my %cyrillic = (
+    'a' => [ 'а' ],
+    'b' => [ 'б', 'ь' ]
+);
+
+my %greek = (
+    'a' => [ 'α' ],
+    'c' => [ 'ς' ]
+);
+
+my %digits = (
+    '6' => [ 'б' ]
+);
+
+my $hg = HomoGlypher.new;
+
+is $hg.mappings, {}, 'empty by default';
+
+lives-ok { $hg.add-mapping( %cyrillic ) }, 'cyrillic added';
+is-deeply $hg.mappings, %cyrillic, 'new mapping initialized';
+
+lives-ok { $hg.add-mapping( %cyrillic ) }, 'duplicates added';
+is-deeply $hg.mappings, %cyrillic, 'duplicated mapping skipped';
+
+lives-ok { $hg.add-mapping( %greek ) }, 'greek added';
+is-deeply $hg.mappings,
+    { 'a' => [ 'а', 'α' ], 'b' => [ 'б', 'ь' ], 'c' => [ 'ς' ] },
+    'additional mapping merged';
+
+$hg.add-mapping( %digits );
+is-deeply $hg.antimappings,
+    { 'α' => [ 'a' ], 'ς' => [ 'c' ], 'а' => [ 'a' ], 'б' => [ 'b', '6' ], 'ь' => [ 'b' ] },
+    'antimapping generated';
