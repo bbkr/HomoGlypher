@@ -66,5 +66,10 @@ my %mapping = (
 );
 ```
 
+I won't tell you where to get perfect mappings. Homoglyphs are font-dependent and similarity is subjective.
 
+Good start point for creating your own mappings are *_alphabet pages on Wikipedia ([Russian](https://en.wikipedia.org/wiki/Russian_alphabet), [Greek](https://en.wikipedia.org/wiki/Greek_alphabet), [Arabic](https://en.wikipedia.org/wiki/Arabic_alphabet), ...) and *_numerals pages ([Roman](https://en.wikipedia.org/wiki/Roman_numerals), [Counting Rods](https://en.wikipedia.org/wiki/Counting_Rod_Numerals_(Unicode_block)), ...).
+
+Or you can borrow mappings from some other projects like [Codebox homoglyphs](https://github.com/codebox/homoglyph), [IronGeek Homoglyph Attack Generator
+](https://www.irongeek.com/homoglyph-attack-generator.php) and many others.
 
