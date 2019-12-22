@@ -5,7 +5,7 @@
     "description" : "Toolset for handling similarly looking characters in strings.",
     "authors" : [ "Paweł bbkr Pabian" ],
     "provides" : {
-        "HomoGlypher" : "lib/HomoGlypher.pm"
+        "HomoGlypher" : "lib/HomoGlypher.rakumod"
     },
     "license" : "Artistic-2.0",
     "source-url" : "git://github.com/bbkr/HomoGlypher.git"
