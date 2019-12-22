@@ -102,3 +102,7 @@ method collapse ( Str:D $text! ) {
 
     return gather $collapse.( '', $text );
 }
+
+method tokenize ( Str:D $text! ) { ... }
+
+method randomize ( Str:D $text!, Int :$level = 50 ) { ... }

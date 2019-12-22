@@ -3,6 +3,8 @@ use lib 'lib';
 use Test;
 use HomoGlypher;
 
+plan 8;
+
 my %cyrillic = (
     'a' => [ 'а' ],
     'b' => [ 'б', 'ь' ]
