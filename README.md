@@ -13,6 +13,39 @@ For example:
 Homoglyphs are:
 
 * Font dependent - two homoglyphs may be 100% identical in one font but have visual differences when rendered in other.
-* Subjective - similarity level cannot be measured and there is no fixed point where two sets of graphemes stops being homoglyphs. Are `a` and `а` homoglyphs? Sure! How about `ź` and `ž`? Probably yes. What will you say about `R` and `Я`? Er.... You see the point.
+* Subjective - similarity level cannot be measured and there is no fixed point where two sets of graphemes stops being homoglyphs. Are `a` and `а` homoglyphs? Sure! How about `ź` and `ž`? Probably yes. What will you say about `R` and `Я`? Er.... You see the point?
 * Funny - replace `;` (SEMICOLON) with `;` (GREEK QUESTION MARK) in someone's code and watch them trying to debug code that looks perfectly fine :)
 * Dangerous - someone can register [IDN domain](https://en.wikipedia.org/wiki/Internationalized_domain_name) that looks very similar to your business domain to swindle money out of your clients.
+
+# SYNOPSIS
+
+```raku
+
+use HomoGlypher;
+
+my %cyrillic = (
+    '6' => [ 'б' ],
+    'a' => [ 'а' ],
+    'b' => [ 'б', 'ь' ],
+    'r' => [ 'г' ]
+);
+
+my %greek = (
+    'a' => [ 'α' ],
+    'o' => [ 'ο' ]
+);
+
+my %myanmar = (
+    'oo' => [ 'က' ]
+);
+
+my $hg = HomoGlypher.new;
+
+$hg.add-mapping( %cyrillic );
+$hg.add-mapping( %greek );
+$hg.add-mapping( %myanmar );
+
+my @unwinded = $hg.unwind( 'foo' );    # [ 'foο', 'fοo', 'fοο', 'fက' ]
+
+my @collapsed = $hg.collapse( 'бαг' ); # [ 'bar', '6ar' ]
+```
