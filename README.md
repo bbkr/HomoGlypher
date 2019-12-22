@@ -1,5 +1,7 @@
 # Homoglyph toolset for [Raku](https://www.raku.org) language
 
+[![Build Status](https://travis-ci.org/bbkr/HomoGlypher.svg?branch=master)](https://travis-ci.org/bbkr/HomoGlypher)
+
 [Homoglyph](https://en.wikipedia.org/wiki/Homoglyph) is set of one or more graphemes that has identical or very similar look to some other set of graphemes.
 
 For example:
