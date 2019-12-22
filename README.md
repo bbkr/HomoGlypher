@@ -57,6 +57,7 @@ my @collapsed = $hg.collapse( 'бαг' ); # [ 'bar', '6ar' ]
 Merge given mapping (given as Hash of Arrays) with existed mappings.
 
 Typically keys are composed from ASCII characters.
+Duplicates are filtered out automatically.
 Multi character glyphs can be used both in keys and values:
 
 ```raku
@@ -66,10 +67,49 @@ my %mapping = (
 );
 ```
 
-I won't tell you where to get perfect mappings. Homoglyphs are font-dependent and similarity is subjective.
+You can inspect megred mappings under `$hg.mappings`, just ***do not modify it directly***.
+If you want to fine tune it then fetch merged result, tweak it and add to new `HomoGlypher` object.
 
-Good start point for creating your own mappings are *_alphabet pages on Wikipedia ([Russian](https://en.wikipedia.org/wiki/Russian_alphabet), [Greek](https://en.wikipedia.org/wiki/Greek_alphabet), [Arabic](https://en.wikipedia.org/wiki/Arabic_alphabet), ...) and *_numerals pages ([Roman](https://en.wikipedia.org/wiki/Roman_numerals), [Counting Rods](https://en.wikipedia.org/wiki/Counting_Rod_Numerals_(Unicode_block)), ...).
+I won't tell you where to get perfect mappings. Homoglyphs are font-dependent and similarity is subjective. Good start point for creating your own mappings are *_alphabet ([Russian](https://en.wikipedia.org/wiki/Russian_alphabet), [Greek](https://en.wikipedia.org/wiki/Greek_alphabet), [Arabic](https://en.wikipedia.org/wiki/Arabic_alphabet)) and *_numerals ([Roman](https://en.wikipedia.org/wiki/Roman_numerals), [Counting Rods](https://en.wikipedia.org/wiki/Counting_Rod_Numerals_(Unicode_block))) pages on Wikipedia. Or you can borrow mappings from some other projects like [Codebox homoglyphs](https://github.com/codebox/homoglyph), [IronGeek Homoglyph Attack Generator](https://www.irongeek.com/homoglyph-attack-generator.php) and many others.
 
-Or you can borrow mappings from some other projects like [Codebox homoglyphs](https://github.com/codebox/homoglyph), [IronGeek Homoglyph Attack Generator
-](https://www.irongeek.com/homoglyph-attack-generator.php) and many others.
+## unwind
+
+Generates every possible mapping combination in your ASCII text.
+Beware, ***this works only for short inputs*** and ***grows really, really fast***.
+
+```raku
+my %cyrillic = (
+    '6' => [ 'б' ],
+    'a' => [ 'а' ],
+    'b' => [ 'б', 'ь' ],
+    'e' => [ 'е', 'ё' ],
+    'm' => [ 'м' ],
+    'p' => [ 'р' ],
+    'r' => [ 'г' ],
+    'x' => [ 'х' ],
+);
+
+my $hg = HomoGlypher.new;
+$hg.add-mapping( %cyrillic );
+
+.print for $hg.unwind( 'example' );
+
+=result
+
+examplё examрle examрlе examрlё exaмple exaмplе exaмplё exaмрle exaмрlе exaмрlё exаmple
+exаmplе exаmplё exаmрle exаmрlе exаmрlё exамple exамplе exамplё exамрle exамрlе exамрlё
+eхample eхamplе eхamplё eхamрle eхamрlе eхamрlё eхaмple eхaмplе eхaмplё eхaмрle eхaмрlе
+eхaмрlё eхаmple eхаmplе eхаmplё eхаmрle eхаmрlе eхаmрlё eхамple eхамplе eхамplё eхамрle
+eхамрlе eхамрlё еxample...
+
+total 143 combinations
+```
+
+Output list:
+
+* Is lazy - so you can iterate over it without worrying about memory consumption.
+* Has preserverd mappings order - so if you sort your mappings from most to less similar your result will have the same characteristics.
+
+
+Main purpose of homoglyph unwinding is to check if someone is spoofing your domain or company name.
 
