@@ -49,3 +49,22 @@ my @unwinded = $hg.unwind( 'foo' );    # [ 'foο', 'fοo', 'fοο', 'fက' ]
 
 my @collapsed = $hg.collapse( 'бαг' ); # [ 'bar', '6ar' ]
 ```
+
+# METHODS
+
+## add-mapping
+
+Merge given mapping (given as Hash of Arrays) with existed mappings.
+
+Typically keys are composed from ASCII characters.
+Multi character glyphs can be used both in keys and values:
+
+```raku
+my %mapping = (
+    'IO' => [ 'Ю' ],
+    'P' => [ '|Ͻ']
+);
+```
+
+
+
