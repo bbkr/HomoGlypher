@@ -1,11 +1,12 @@
 {
     "perl" : "6.d",
     "name" : "HomoGlypher",
-    "version" : "1.0.0",
+    "version" : "1.0.1",
     "description" : "Toolset for handling similarly looking characters in strings.",
     "authors" : [ "Paweł bbkr Pabian" ],
     "provides" : {
-        "HomoGlypher" : "lib/HomoGlypher.rakumod"
+        "HomoGlypher" : "lib/HomoGlypher.rakumod",
+        "HomoGlypher::Mappings" : "lib/HomoGlypher/Mappings.rakumod",
     },
     "license" : "Artistic-2.0",
     "source-url" : "git://github.com/bbkr/HomoGlypher.git"
