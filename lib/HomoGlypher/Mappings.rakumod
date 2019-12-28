@@ -16,10 +16,10 @@ Cursive similarities are not included.
 For example 'т' in cursive looks like 'm'.
 Maybe such advanced mappings will be added in the future.
 
-Vertical flips are included in regular and %flipped mappings.
+Vertical mirroring are included in regular and %flipped mappings.
 For example 'R' and 'Я'.
 
-Horizontal flips are includedonly in %flipped mapping.
+90°, 180° and 270° flips are included only in %flipped mapping.
 For example 'G' and '⅁'.
 
 Remember that mappings are font dependent and subjective.
