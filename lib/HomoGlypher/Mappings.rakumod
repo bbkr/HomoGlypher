@@ -16,6 +16,12 @@ Cursive similarities are not included.
 For example 'т' in cursive looks like 'm'.
 Maybe such advanced mappings will be added in the future.
 
+Vertical flips are included in regular and %flipped mappings.
+For example 'R' and 'Я'.
+
+Horizontal flips are includedonly in %flipped mapping.
+For example 'G' and '⅁'.
+
 Remember that mappings are font dependent and subjective.
 There is no ultimate truth.
 
@@ -173,5 +179,52 @@ our %roman-numerals = (
     'X' => [ 'Ⅹ' ],
     'XI' => [ 'Ⅺ' ],
     'XII' => [ 'Ⅻ' ],
+
+);
+
+our %math-symbols = (
+
+    '0' => [ '∅' ],
+    '3' => [ '϶' ],
+
+    'c' => [ '⊂' ],
+    'd' => [ '∂' ],
+    'f' => [ '⨍' ],
+    'n' => [ '⨅' ],
+    'u' => [ '∪', '⋃' ],
+    'v' => [ '⋁', '⋎' ],
+    'x' => [ '⨉', '×' ],
+
+    'C' => [ '∁' ],
+    'D' => [ '⫐' ],
+    'E' => [ '⋿', '∃', '∈', '∋', '∑', '⨊' ],
+    'I' => [ '|', '⎮', '⎪' ],
+    'L' => [ '∟', '⦜', '⦝' ],
+    'T' => [ '⟙', '⊤', '⥾' ],
+    'V' => [ '√' ],
+
+);
+
+# flipped mappings should have very high similarity and no accents
+# it may contain flips of other ASCII characters than alphanumerics
+
+our %flipped = (
+
+    '&' => [ '⅋' ],
+
+    '8' => [ '∞' ],
+
+    'c' => [ '⊃' ],
+    'v' => [ '⋀', '⋏' ],
+
+    'A' => [ '∀' ],
+    'D' => [ '⫏' ],
+    'E' => [ '∃', '⧢' ],
+    'G' => [ '⅁' ],
+    'N' => [ 'И', 'и' ],
+    'R' => [ 'Я', 'я' ],
+    'T' => [ '⟘', '⊥', '⟂',  '⊢', '⊣' ],
+    'U' => [ '∩', '⋂' ],
+    'Y' => [ '⅄' ],
 
 );
