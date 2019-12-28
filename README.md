@@ -190,7 +190,22 @@ TODO
 
 ## randomize
 
-TODO
+Replace characters in text with homoglyphs with given probability.
+
+```
+my $hg = HomoGlypher.new;
+$hg.add-mapping( %HomoGlypher::Mappings::flipped );
+
+say $hg.randomize( 'DIRECTIONS & CAKE ARE A LIE', level => 100 );
+```
+
+```
+⫏Iя∃C⟘IOИƧ ⅋ C∀K⧢ ∀Я∃ ∀ LI∃
+```
+
+Level can be given as percentage value from 1 to 100 (default 50). It decides if ***possible*** mapping should be used at given position. Do not confuse that with amount of replaced characters. For example you have mapping `'a' => [ 'α' ]` and level set to 50%. Transforming `barrrr` will result with unmodified `barrrr` with 50% probability (at second position transformation was possible but not used) and modified `bαrrrr` with 50% probability (at second position transformation was possible and used). Each position is rolled individually against level. Each possible replacement glyph has equal chance to be picked.
+
+[Text::Homoglyph](https://github.com/MattOates/Text--Homoglyph) module does similar thing.
 
 ## CONTACT
 

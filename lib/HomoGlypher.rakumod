@@ -105,4 +105,35 @@ method collapse ( Str:D $text! ) {
 
 method tokenize ( Str:D $text! ) { ... }
 
-method randomize ( Str:D $text!, Int :$level = 50 ) { ... }
+method randomize ( Str:D $text!, Int:D :$level where { 1 <= $level <= 100 } = 50 ) {
+
+    my $todo = $text;
+    my $done = '';
+    
+    while $todo.chars {
+        
+        # check which mappings matches next characters from 'todo' pile
+        my @from = %.mappings.keys.grep( { $todo.starts-with( $_ ) } );
+    
+        # when mapping is found it will be only applied with given probability
+        if @from and ( 1..100 ).pick <= $level {
+        
+            # pick which unmodified characters will be replaced
+            my $from = @from.pick;
+        
+            # take unmodified characters from 'todo' pile
+            # and append random replacement from mapping to 'done' pile
+            $todo .= substr( $from.chars );
+            $done ~= %.mappings{ $from }.pick
+        }
+        # when no mapping was found move one character from 'todo' pile to 'done' pile
+        else {
+        
+            my $char = $todo.substr( 0, 1 );
+            $todo .= substr( 1 );
+            $done ~= $char;
+        }
+    }
+
+    return $done;
+}

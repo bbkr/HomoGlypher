@@ -1,0 +1,42 @@
+use lib 'lib';
+
+use Test;
+use HomoGlypher;
+
+plan 4;
+
+my %cyrillic = (
+    'a' => [ 'а' ],
+    'b' => [ 'б', 'ь' ],
+    'io' => [ 'ю' ]
+);
+
+my %myanmar = (
+    'oo' => [ 'က']
+);
+
+my $hg = HomoGlypher.new;
+
+is $hg.randomize( 'foo', level => 100 ), 'foo', 'no mappings';
+
+$hg.add-mapping( %cyrillic );
+
+my %seen;
+while !( %seen{ 'a' } and %seen{ 'а' } ) {
+    %seen{ $hg.randomize( 'a', level => 50 ) }++;
+    LAST pass 'characters can be randomized or left alone depending on level';
+}
+
+%seen = ( );
+while !( %seen{ 'б' } and %seen{ 'ь' } ) {
+    %seen{ $hg.randomize( 'b', level => 100 ) }++;
+    LAST pass 'every replacement may appear';
+}
+
+$hg.add-mapping( %myanmar );
+
+%seen = ( );
+while !( %seen{ 'ioo' } and %seen{ 'юo' } and %seen{ 'iက' } ) {
+    %seen{ $hg.randomize( 'ioo', level => 50 ) }++;
+    LAST pass 'overlapping mappings';
+}
