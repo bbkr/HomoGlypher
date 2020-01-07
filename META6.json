@@ -6,7 +6,7 @@
     "authors" : [ "Paweł bbkr Pabian" ],
     "provides" : {
         "HomoGlypher" : "lib/HomoGlypher.rakumod",
-        "HomoGlypher::Mappings" : "lib/HomoGlypher/Mappings.rakumod",
+        "HomoGlypher::Mappings" : "lib/HomoGlypher/Mappings.rakumod"
     },
     "license" : "Artistic-2.0",
     "source-url" : "git://github.com/bbkr/HomoGlypher.git"
