@@ -103,7 +103,58 @@ method collapse ( Str:D $text! ) {
     return gather $collapse.( '', $text );
 }
 
-method tokenize ( Str:D $text! ) { ... }
+method tokenize ( Str:D $text! where { $text.chars > 0 } ) {
+    
+    my $match = sub ( Str:D $paragraph, Int:D $position, Str:D $done, Str:D $todo = $text ) {
+
+        # 'todo' pile is empty, 'done' pile contains result
+        return $done if $todo.chars == 0;
+
+        # check which antimappings match next characters in analyzed paragraph
+        for %.antimappings -> $mapping {
+            my $from := $mapping.key;
+            my @to := $mapping.value;
+            
+            # this antimapping does not match
+            next unless $paragraph.substr-eq( $from, $position );
+            
+            # check which antimapping replacements matches next characters from 'todo' pile
+            for @to -> $to {
+                
+                # this replacement cannot produce text that is searched
+                next unless $todo.starts-with( $to );
+                
+                # call recursively and propagate up any found results
+                # (matching part is taken from 'todo' pile, antimapped and added to 'done' pile)
+                return $_ with samewith(
+                    $paragraph, $position + $from.chars,
+                    $done ~ $from, $todo.substr( $to.chars, * )
+                );
+            }
+        }
+
+        # if Depth First Search failed for antimappings
+        # next unmodified character should be taken if it matches analyzed paragraph
+        return unless $paragraph.substr-eq( $todo.substr( 0, 1 ), $position );
+        
+        # (first character is transfered from 'todo' pile to 'done' pile)
+        return samewith( $paragraph, $position + 1, $done ~ $todo.substr( 0, 1 ), $todo.substr( 1, * ) );
+        
+    };
+
+    return token {
+        
+        # do not match original text
+        <!before $text>
+        
+        # locate homoglyphed text corresponding with original lookup text
+        :my $found;
+        <?{ so $found = $match( $/.orig, $/.pos, '' ) }>
+        
+        # consume matched part of paragraph
+        $found
+    };
+}
 
 method randomize ( Str:D $text!, Int:D :$level where { 1 <= $level <= 100 } = 50 ) {
 
