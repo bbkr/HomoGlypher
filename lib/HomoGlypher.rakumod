@@ -25,7 +25,7 @@ method add-mapping ( %mapping ) {
 
 method unwind ( Str:D $text! ) {
     
-    my $unwind = sub  ( Str:D $done, Str:D $todo ) {
+    my $unwind = sub ( Str:D $done, Str:D $todo ) {
         
         # 'todo' pile is empty, 'done' pile contains result
         if $todo.chars == 0 {
@@ -63,7 +63,7 @@ method unwind ( Str:D $text! ) {
 
 method collapse ( Str:D $text! ) {
 
-    my $collapse = sub  ( Str:D $done, Str:D $todo ) {
+    my $collapse = sub ( Str:D $done, Str:D $todo ) {
 
         # 'todo' pile is empty, 'done' pile contains result
         if $todo.chars == 0 {
@@ -103,9 +103,9 @@ method collapse ( Str:D $text! ) {
     return gather $collapse.( '', $text );
 }
 
-method tokenize ( Str:D $text! where { $text.chars > 0 } ) {
+method tokenize ( ) {
     
-    my $match = sub ( Str:D $paragraph, Int:D $position, Str:D $done, Str:D $todo = $text ) {
+    my $match = sub ( Str:D $paragraph, Int:D $position, Str:D $done, Str:D $todo ) {
 
         # 'todo' pile is empty, 'done' pile contains result
         return $done if $todo.chars == 0;
@@ -142,7 +142,7 @@ method tokenize ( Str:D $text! where { $text.chars > 0 } ) {
         
     };
 
-    return token {
+    return token ( Str:D $text! where { $text.chars > 0 } ) {
         
         # do not match original text
         <!before $text>
