@@ -38,7 +38,7 @@ method unwind ( Str:D $text! ) {
         
         # results should be produced in 'least to most mapped' order,
         # so before mappings are checked call recursively for next unmodified character
-        # (first character is transfered from 'todo' pile to 'done' pile)
+        # (first character is transferred from 'todo' pile to 'done' pile)
         samewith( $done ~ $todo.substr( 0, 1 ), $todo.substr( 1, * ) );
     
         # check which mapping matches next characters from 'todo' pile
@@ -95,7 +95,7 @@ method collapse ( Str:D $text! ) {
         # result should contain as many antimapped pieces as possible,
         # so call recursively for next unmodified character
         # only if no antimapping took place
-        # (first character is transfered from 'todo' pile to 'done' pile)
+        # (first character is transferred from 'todo' pile to 'done' pile)
         samewith( $done ~ $todo.substr( 0, 1 ), $todo.substr( 1, * ) ) unless $had-mapping;
         
     };
@@ -137,7 +137,7 @@ method tokenize ( ) {
         # next unmodified character should be taken if it matches analyzed paragraph
         return unless $paragraph.substr-eq( $todo.substr( 0, 1 ), $position );
         
-        # (first character is transfered from 'todo' pile to 'done' pile)
+        # (first character is transferred from 'todo' pile to 'done' pile)
         return samewith( $paragraph, $position + 1, $done ~ $todo.substr( 0, 1 ), $todo.substr( 1, * ) );
         
     };
@@ -149,7 +149,7 @@ method tokenize ( ) {
         
         # locate homoglyphed text corresponding with original lookup text
         :my $found;
-        <?{ so $found = $match( $/.orig, $/.pos, '' ) }>
+        <?{ so $found = $match( $/.orig, $/.pos, '', $text ) }>
         
         # consume matched part of paragraph
         $found

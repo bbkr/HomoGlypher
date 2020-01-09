@@ -17,20 +17,16 @@ my %myanmar = (
 
 my $hg = HomoGlypher.new;
 
-my $token = $hg.tokenize( 'bar' );
-isa-ok $token, Regex, 'token built';
+my &token = $hg.tokenize( );
+isa-ok &token, Regex, 'token built';
 
-nok 'bar' ~~ $token, 'literal text is not matched';
+nok 'bar' ~~ / <&token: 'bar'> /, 'literal text is not matched';
 
 $hg.add-mapping( %cyrillic );
 $hg.add-mapping( %myanmar );
-$token = $hg.tokenize( 'bariooo' );
-ok [and]( $hg.unwind( 'bariooo' ).map( { $_ ~~ $token } ) ), 'homoglyphed text is matched';
+ok [and]( $hg.unwind( 'bariooo' ).map( { $_ ~~ / <&token: 'bariooo'> / } ) ), 'homoglyphed text is matched';
 
-$token = $hg.tokenize( 'foo' );
-'fက' ~~ / $<result>=<$token> /;
+'fက' ~~ / $<result>=<&token: 'foo'> /;
 is $/{ 'result' }, 'fက', 'token captures homoglyphed text';
 
-my $token-short = $hg.tokenize( 'foo' );
-my $token-long = $hg.tokenize( 'foobar' );
-ok 'xfကьаry' ~~ / 'x' [ <$token-short> | <$token-long> ] 'y' /, 'whole tokens can be backtracked';
+ok 'xfကьаry' ~~ / 'x' [ <&token: 'foo'> | <&token: 'foobar'> ] 'y' /, 'whole tokens can be backtracked';
