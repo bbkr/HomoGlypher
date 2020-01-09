@@ -1,0 +1,32 @@
+use lib 'lib';
+
+use Test;
+use HomoGlypher;
+
+plan 5;
+
+my %cyrillic = (
+    'a' => [ 'а' ],
+    'b' => [ 'б', 'ь' ],
+    'io' => [ 'ю' ]
+);
+
+my %myanmar = (
+    'oo' => [ 'က']
+);
+
+my $hg = HomoGlypher.new;
+
+my &token = $hg.tokenize( );
+isa-ok &token, Regex, 'token built';
+
+nok 'bar' ~~ / <&token: 'bar'> /, 'literal text is not matched';
+
+$hg.add-mapping( %cyrillic );
+$hg.add-mapping( %myanmar );
+ok [and]( $hg.unwind( 'bariooo' ).map( { $_ ~~ / <&token: 'bariooo'> / } ) ), 'homoglyphed text is matched';
+
+'fက' ~~ / $<result>=<&token: 'foo'> /;
+is $/{ 'result' }, 'fက', 'token captures homoglyphed text';
+
+ok 'xfကьаry' ~~ / 'x' [ <&token: 'foo'> | <&token: 'foobar'> ] 'y' /, 'whole tokens can be backtracked';

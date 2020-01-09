@@ -34,7 +34,6 @@ Homoglyphs are:
 # SYNOPSIS
 
 ```raku
-
 use HomoGlypher;
 
 my %cyrillic = (
@@ -184,9 +183,49 @@ VOWEL
 Main purpose of homoglyph collapsing is to check if someone is using your forums, hostings, or other services for phishing or false advertising.
 Check also [tokenize](#tokenize) method.
 
+[Unicode::Security](https://github.com/JJ/perl6-unicode-security) module does similar thing.
+
 ## tokenize
 
-TODO
+Construct token that can be used to match homoglyphed text in grammars.
+
+```raku
+my %greek = (
+    'a' => [ 'α' ],
+    'r' => [ 'Γ' ],
+);
+
+my $hg = HomoGlypher.new;
+$hg.add-mapping( %greek );
+
+my &homoglyphy = $hg.tokenize( );
+
+'foobαΓbaz' ~~ / $<result>=<&homoglyphy: 'bar'> /;
+say $/{ 'result' };
+
+```
+
+```
+｢bαΓ｣
+```
+
+Beware, ***token uses mappings present at match time***.
+You can create token without any mappings added, define grammar that uses this token and then add mappings before text is actually matched against grammar.
+If you need tokens with different set of mapping in one grammar you can create and tokenize many `HomoGlypher` instances.
+
+[Regex::FuzzyToken](https://github.com/alabamenhu/RegexFuzzyToken) module can be used to catch misspelled phrases. Homoglypher and FuzzyToken can coexist in single grammar:
+
+```raku
+say 'Suspicious!' if $email-text ~~ / [ <fuzzy: 'paypal'> | <&homoglyphy: 'paypal'> ] /;
+```
+
+Will catch both `papyal` (misspelled) and `pαypαl` (homoglyphed). And yes, you can throw nuke on phishers and catch misspells and homoglyphs at the same time:
+
+```raku
+say 'Suspicious!' if $email-text ~~ / <fuzzy: $hg.unwind('paypal')> /;
+```
+
+Will catch such sneaky phrases as `pαpyαl`.
 
 ## randomize
 
