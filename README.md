@@ -61,6 +61,12 @@ $hg.add-mapping( %myanmar );
 my @unwinded = $hg.unwind( 'foo' );    # [ 'foο', 'fοo', 'fοο', 'fက' ]
 
 my @collapsed = $hg.collapse( 'бαг' ); # [ 'bar', '6ar' ]
+
+my $randomized = $hg.randomize( 'bar', level => 80 ); # for example 'bαr'
+
+my &tokenized = $hg.tokenize( );
+say so 'bαг' ~~ / <&tokenized: 'bar'> /; # True
+
 ```
 
 # HINT
@@ -103,12 +109,12 @@ use HomoGlypher::Mappings;
 
 my $hg = HomoGlypher.new;
 
-$hg.add-mapping( %HomoGlypher::Mappings::cyrillic );
-$hg.add-mapping( %HomoGlypher::Mappings::greek );
-...
+$hg.add-mapping( $_ ) for @HomoGlypher::Mappings::all;  # load all mappings
+
+$hg.add-mapping( %HomoGlypher::Mappings::cyrillic );    # or load specific mapping, check source for available names
 ```
 
-I won't tell you where to get perfect, complete, ultimate mapping because homoglyphs are font-dependent and similarity is subjective. Good start point for creating your own mappings are *_alphabet ([Russian](https://en.wikipedia.org/wiki/Russian_alphabet), [Greek](https://en.wikipedia.org/wiki/Greek_alphabet), [Arabic](https://en.wikipedia.org/wiki/Arabic_alphabet), ...) and *_numerals ([Roman](https://en.wikipedia.org/wiki/Roman_numerals), [Counting Rods](https://en.wikipedia.org/wiki/Counting_Rod_Numerals_(Unicode_block)), ...) pages on Wikipedia. Or you can borrow mappings from some other projects like [Codebox homoglyphs](https://github.com/codebox/homoglyph), [IronGeek Homoglyph Attack Generator](https://www.irongeek.com/homoglyph-attack-generator.php) and many others.
+I won't tell you where to get perfect, complete, ultimate mapping because homoglyphs are font-dependent and similarity is subjective. Good start point for creating your own mappings are (*_alphabet)[https://en.wikipedia.org/wiki/List_of_writing_systems] and [*_numeral](https://en.wikipedia.org/wiki/List_of_numeral_systems) pages on Wikipedia. Or you can borrow mappings from some other projects like [Codebox homoglyphs](https://github.com/codebox/homoglyph), [IronGeek Homoglyph Attack Generator](https://www.irongeek.com/homoglyph-attack-generator.php) and many others.
 
 ## unwind
 

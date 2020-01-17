@@ -3,7 +3,7 @@ use lib 'lib';
 use Test;
 use HomoGlypher;
 
-plan 9;
+plan 10;
 
 my %cyrillic = (
     'a' => [ 'а' ],
@@ -39,4 +39,6 @@ is-deeply $hg.antimappings,
     { 'α' => [ 'a' ], 'ς' => [ 'c' ], 'а' => [ 'a' ], 'б' => [ 'b', '6' ], 'ь' => [ 'b' ] },
     'antimapping generated';
 
-use-ok 'HomoGlypher::Mappings', 'predefined mappings loaded';
+use-ok 'HomoGlypher::Mappings', 'predefined mappings present';
+use HomoGlypher::Mappings;
+lives-ok { $hg.add-mapping( $_ ) for @HomoGlypher::Mappings::all }, 'predefined mappings valid';

@@ -12,15 +12,19 @@ Keys should be provided in "digts, lowercase letters, uppercase letters" order.
 Values should be sorted in "from most to less similar" order.
 Glyphs with accents are always considered less similar.
 
+Size difference must be reasonable.
+For example 'O' and '°' are not considered homoglyphs.
+
 Cursive similarities are not included.
 For example 'т' in cursive looks like 'm'.
 Maybe such advanced mappings will be added in the future.
 
-Vertical mirroring are included in regular and %flipped mappings.
+Vertical mirroring are included in mappings.
 For example 'R' and 'Я'.
 
-90°, 180° and 270° flips are included only in %flipped mapping.
-For example 'G' and '⅁'.
+90°, 180° and 270° rotations with optional mirroring
+are included only in special %flipped mapping.
+For example 'G' and '⅁' or 'J' and '𐐓'.
 
 Remember that mappings are font dependent and subjective.
 There is no ultimate truth.
@@ -87,6 +91,37 @@ our %cherokee = (
     'V' => [ 'Ꮩ', 'Ꮴ', 'Ꮙ' ],
     'W' => [ 'Ꮃ', 'Ꮤ' ],
     'Z' => [ 'Ꮓ' ],
+
+);
+
+our %deseret = (
+
+    '6' => [ '𐐞' ],
+
+    'a' => [ '𐐀', '𐐀' ],
+    'b' => [ '𐑇' ],
+    'c' => [ '𐐽' ],
+    'd' => [ '𐐼' ],
+    'l' => [ '𐑊', '𐐢' ],
+    'o' => [ '𐐬', '𐐫' ],
+    'p' => [ '𐑁' ],
+    's' => [ '𐑈' ],
+    'v' => [ '𐐷', '𐑄' ],
+    'w' => [ '𐐶' ],
+
+    'B' => [ '𐐚' ],
+    'C' => [ '𐐕' ],
+    'D' => [ '𐐟' ],
+    'E' => [ '𐐁' ],
+    'J' => [ '𐐢' ],
+    'L' => [ '𐐛', '𐑃' ],
+    'N' => [ '𐐥', '𐑍' ],
+    'O' => [ '𐐄', '𐐃' ],
+    'P' => [ '𐐙' ],
+    'S' => [ '𐐠' ],
+    'V' => [ '𐐏', '𐐜' ],
+    'W' => [ '𐐎' ],
+    'Y' => [ '𐐜' ],
 
 );
 
@@ -191,7 +226,6 @@ our %georgian = (
 
 );
 
-
 our %roman-numerals = (
 
     'c' => [ 'ⅽ' ],
@@ -253,24 +287,29 @@ our %math-symbols = (
 
 );
 
+# set of all typical homoglyph mappings for easier loading
+our @all = ( %armenian, %cherokee, %cyrillic, %deseret, %greek, %georgian, %roman-numerals, %math-symbols );
+
+# special mappings section
+
 # flipped mappings should have very high similarity and no accents
 # it may contain flips of other ASCII characters than alphanumerics
-
 our %flipped = (
 
     '&' => [ '⅋' ],
 
     '8' => [ '∞' ],
 
-    'c' => [ '⊃' ],
+    'c' => [ '𐑋', '⊃' ],
     'v' => [ '⋀', '⋏' ],
 
     'A' => [ '∀' ],
     'D' => [ '⫏' ],
+    'C' => [ '𐐣' ],
     'E' => [ '∃', '⧢' ],
     'G' => [ '⅁' ],
-    'J' => [ 'Ꮣ', 'Ⴑ' ],
-    'L' => [ 'Ⴈ' ],
+    'J' => [ 'Ꮣ', 'Ⴑ', '𐐓' ],
+    'L' => [ 'Ⴈ', '𐐑' ],
     'N' => [ 'И', 'и' ],
     'R' => [ 'Я', 'я' ],
     'S' => [ 'Ƨ' ],
