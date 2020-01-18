@@ -1,7 +1,7 @@
 {
     "perl" : "6.d",
     "name" : "HomoGlypher",
-    "version" : "1.5.0",
+    "version" : "1.5.1",
     "description" : "Toolset for handling similarly looking characters in strings.",
     "authors" : [ "Paweł bbkr Pabian" ],
     "provides" : {
