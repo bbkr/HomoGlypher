@@ -352,6 +352,18 @@ our %lisu = (
 
 );
 
+our %myanmar = (
+
+    '3' => [ 'ဒ' ],
+
+    'c' => [ 'င' ],
+    'm' => [ 'က' ],
+    'o' => [ 'ဝ', ],
+    'oo' => [ 'ထ' ],
+    'w' => [ 'ယ' ],
+
+);
+
 our %roman-numerals = (
 
     'c' => [ 'ⅽ' ],
@@ -430,7 +442,7 @@ our %math-symbols = (
 );
 
 # set of all typical homoglyph mappings for easier loading
-our @basic = ( %armenian, %cherokee, %cyrillic, %deseret, %greek, %georgian, %latin, %lisu, %roman-numerals, %runic, %math-symbols );
+our @basic = ( %armenian, %cherokee, %cyrillic, %deseret, %greek, %georgian, %latin, %lisu, %myanmar, %roman-numerals, %runic, %math-symbols );
 
 # special mappings section
 
@@ -442,7 +454,8 @@ our %flipped = (
 
     '1' => [ 'ᛚ' ],
     '3' => [ 'Ƹ' ],
-    '8' => [ '∞' ],
+    '5' => [ 'ဥ' ],
+    '8' => [ '∞', 'ထ' ],
 
     'a' => [ 'ɐ' ],
     'c' => [ 'ɔ', 'ↄ', '𐑋', '⊃', 'ᴐ', 'ᴒ' ],
@@ -476,7 +489,7 @@ our %flipped = (
     'P' => [ 'ꓒ' ],
     'Q' => [ 'Ꝺ' ],
     'R' => [ 'ᴚ', 'Я', 'ꓤ', 'я' ],
-    'S' => [ 'Ƨ', 'Ƨ' ],
+    'S' => [ 'Ƨ', 'Ƨ', 'လ' ],
     'T' => [ '⟘', 'ꓕ', '⊥', '⟂',  '⊢', '⊣' ],
     'U' => [ 'ꓵ', '∩', '⋂' ],
     'V' => [ 'Ʌ', 'ꓥ' ],
