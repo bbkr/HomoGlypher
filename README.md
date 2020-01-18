@@ -103,9 +103,9 @@ If you want to fine tune it then fetch merged result, tweak it and add to new `H
 
 Few ready to use mappings are provided in [HomoGlypher::Mappings](https://github.com/bbkr/HomoGlypher/blob/master/lib/HomoGlypher/Mappings.rakumod):
 
-* `@basic` - ASCII letters and digits in various scripts (armenian, cherokee, cyrillic, deseret, greek, georgian, latin, lisu, roman-numerals, etc.): `⟙Ⴙе qυᎥ⊂k ЬГიѡո Ꮅσ⨉ jսოр𐑈 օ𐐷еᎱ tᏥе ιαzႸ Ժօց, ᎾᛐշჳᏎ5𐐞7ՑᏭ`.
-* `%accented` - ASCII letters with accents: `Ţȟè ɋųǐĉꝅ ᶀɼơⱳᵰ ᵮôẍ ĵữṁꝕṩ ǭⱱëȑ ʈẖḕ ļǟʐȳ ɗȫǵ`. Try to read it loud... Correctly :)
-* `%flipped` - ASCII letters, digits and symbols in various rotations and mirroring: `ꓕH⧢ Ꝺ⋂I𐐣ꓘ ꓭꓤOW𐐥 ꓞOX jᴝᴟpƨ ᴑ⋏ǝɹ ʇɥɘ ꞁɐzʎ dᴑᵷ, 0ᛚ2Ƹ4567∞9`;
+* `@basic` - ASCII letters and digits in various scripts (armenian, cherokee, cyrillic, deseret, greek, georgian, latin, lisu, roman-numerals, etc.): `ΤꜦꜪ QՍΙᴄк вᚱՕꓪɴ ꓝᏅХ` `jսოр𐑈 օ𐐷еᎱ tᏥе ιαzႸ Ժօց` `ОᛐշʒᏎƼỼ7ꝸᏭ`.
+* `%accented` - ASCII letters with accents: `ȚȞȆ ꝖṲÏÇꝂ ḂŔǾⱲṆ ḞṌẌ` `ĵữṁꝕṩ ǭⱱëȑ ʈẖḕ ļǟʐȳ ɗȫǵ`. Try to read it loud... Correctly :)
+* `%flipped` - ASCII letters, digits and symbols in various rotations and mirroring: `ꓕH⧢ Ꝺ⋂I𐐣ꓘ ꓭꓤOW𐐥 ꓞOX` `jᴝᴟpƨ ᴑ⋏ǝɹ ʇɥɘ ꞁɐzʎ dᴑᵷ` `0ᛚ2Ƹ4567∞9`;
 
 ```
 use HomoGlypher;
