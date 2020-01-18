@@ -1,4 +1,4 @@
-unit class HomoGlypher:auth<bbkr>:ver<1.3.0>;
+unit class HomoGlypher:auth<bbkr>:ver<1.4.0>;
 
 has %.mappings;
 has %.antimappings;

@@ -334,7 +334,7 @@ our %math-symbols = (
 );
 
 # set of all typical homoglyph mappings for easier loading
-our @all = ( %armenian, %cherokee, %cyrillic, %deseret, %greek, %georgian, %lisu, %roman-numerals, %runic, %math-symbols );
+our @basic = ( %armenian, %cherokee, %cyrillic, %deseret, %greek, %georgian, %lisu, %roman-numerals, %runic, %math-symbols );
 
 # special mappings section
 
@@ -371,3 +371,24 @@ our %flipped = (
     'Y' => [ '⅄' ],
 
 );
+
+# accented mappings contains ASCII letters with modifiers,
+# this mapping is generated on the fly
+our %accented = do {
+    my %out;
+
+    # basic multilingual plane
+    for (1 .. 0xFFFF).map( *.chr ) -> $char {
+        
+        next unless $char.uniname ~~ /^ 'LATIN ' $<case>=[ 'SMALL' | 'CAPITAL' ] ' LETTER ' $<letter>=<[A..Z]> ' WITH ' $<mod>=[ .+ ] /;
+    
+        # filter out 'LETTER WITH LETTER' characters like 'ǅ'
+        next if $/{ 'mod' }.contains( 'LETTER' );
+    
+        # use letter extracted from unicode name instead of relying on decomposed form
+        # because some letters with modifiers do not decompose, for example 'Ł'
+        %out{ $/{ 'case' } eq 'SMALL' ?? $/{ 'letter' }.lc !! $/{ 'letter' } }.push( $char );
+    }
+    
+    %out;
+};

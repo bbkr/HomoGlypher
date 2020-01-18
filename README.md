@@ -103,13 +103,17 @@ If you want to fine tune it then fetch merged result, tweak it and add to new `H
 
 Few ready to use mappings are provided in [HomoGlypher::Mappings](https://github.com/bbkr/HomoGlypher/blob/master/lib/HomoGlypher/Mappings.rakumod):
 
+* `@basic` - ASCII letters and digits in various scripts (armenian, cherokee, cyrillic, deseret, greek, georgian, lisu, roman-numerals, etc.): `⟙Ⴙе qυᎥ⊂k ЬГიѡո Ꮅσ⨉ jսოр𐑈 օ𐐷еᎱ tᏥе ιαzႸ Ժօց, ᎾᛐշჳᏎ5𐐞7ՑᏭ`.
+* `%accented` - ASCII letters with accents: `Ţȟè ɋųǐĉꝅ ᶀɼơⱳᵰ ᵮôẍ ĵữṁꝕṩ ǭⱱëȑ ʈẖḕ ļǟʐȳ ɗȫǵ`. Try to read it loud... Correctly :)
+* `%flipped` - ASCII letters, digits and symbols in various rotations and mirroring: `⟂H∃ QꓵI𐐣ꓘ ꓭяOW𐑍 ꓞOX jumps o⋏er the lazy dog, 0ᛚ234567∞9`;
+
 ```
 use HomoGlypher;
 use HomoGlypher::Mappings;
 
 my $hg = HomoGlypher.new;
 
-$hg.add-mapping( $_ ) for @HomoGlypher::Mappings::all;  # load all mappings
+$hg.add-mapping( $_ ) for @HomoGlypher::Mappings::basic;    # load basic mappings
 
 $hg.add-mapping( %HomoGlypher::Mappings::cyrillic );    # or load specific mapping,
                                                         # check source for available names
