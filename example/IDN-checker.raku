@@ -8,9 +8,7 @@ my $tld = 'com';
 my $dns = '1.1.1.1';
 
 my $hg = HomoGlypher.new;
-$hg.add-mapping( %HomoGlypher::Mappings::roman-numerals );
-$hg.add-mapping( %HomoGlypher::Mappings::cyrillic );
-$hg.add-mapping( %HomoGlypher::Mappings::greek );
+$hg.add-mapping( $_ ) for @HomoGlypher::Mappings::basic;
 
 for $hg.unwind( $domain ) -> $homoglyphed-domain {
     my $punycoded-domain = encode_punycode( $homoglyphed-domain );
