@@ -104,6 +104,7 @@ If you want to fine tune it then fetch merged result, tweak it and add to new `H
 Few ready to use mappings are provided in [HomoGlypher::Mappings](https://github.com/bbkr/HomoGlypher/blob/master/lib/HomoGlypher/Mappings.rakumod):
 
 * `@basic` - ASCII letters and digits in various scripts (armenian, cherokee, cyrillic, deseret, greek, georgian, latin, lisu, roman-numerals, etc.): `ΤꜦꜪ QՍΙᴄк вᚱՕꓪɴ ꓝᏅХ` `jսოр𐑈 օ𐐷еᎱ tᏥе ιαzႸ Ժօց` `ОᛐշʒᏎƼỼ7ꝸᏭ`.
+* `@typeface` - ASCII letters and digith with typeface (full-width, monospace, bold, italic, fraktur, bold-fraktur, script, bold-script, doublestruck) style applied: `𝗧𝕳𝓔 𝒬𝕌𝕀𝙲𝔎 𝔹𝗥ＯＷ𝓝 𝘍𝕆𝗫` `𝒿𝓾𝗺𝚙𝕤 𝔬𝘃𝘦𝓇 𝔱𝘩𝘦 𝖑𝖆𝕫𝔂 𝗱𝓸𝔤` `𝟘𝟙２𝟹４𝟻𝟼𝟽𝟠𝟡`
 * `%accented` - ASCII letters with accents: `ȚȞȆ ꝖṲÏÇꝂ ḂŔǾⱲṆ ḞṌẌ` `ĵữṁꝕṩ ǭⱱëȑ ʈẖḕ ļǟʐȳ ɗȫǵ`. Try to read it loud... Correctly :)
 * `%flipped` - ASCII letters, digits and symbols in various rotations and mirroring: `ꓕH⧢ Ꝺ⋂I𐐣ꓘ ꓭꓤOW𐐥 ꓞOX` `jᴝᴟpƨ ᴑ⋏ǝɹ ʇɥɘ ꞁɐzʎ dᴑᵷ` `0ᛚ2Ƹ4567∞9`;
 
