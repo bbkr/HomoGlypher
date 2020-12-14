@@ -1,6 +1,6 @@
 # Homoglyph toolset for [Raku](https://www.raku.org) language
 
-[![Build Status](https://travis-ci.org/bbkr/HomoGlypher.svg?branch=master)](https://travis-ci.org/bbkr/HomoGlypher)
+![test](https://github.com/bbkr/HomoGlypher/workflows/test/badge.svg)
 
 [Homoglyph](https://en.wikipedia.org/wiki/Homoglyph) is set of one or more graphemes that has identical or very similar look to some other set of graphemes.
 
@@ -257,7 +257,3 @@ say $hg.randomize( 'DIRECTIONS & CAKE ARE A LIE', level => 100 );
 Level can be given as percentage value from 1 to 100 (default 50). It decides if ***possible*** mapping should be used at given position. Do not confuse that with amount of replaced characters. For example you have mapping `'a' => [ 'α' ]` and level set to 50%. Transforming `barrrr` will result with unmodified `barrrr` with 50% probability (at second position transformation was possible but not used) and modified `bαrrrr` with 50% probability (at second position transformation was possible and used). Each position is rolled individually against level. Each possible replacement glyph has equal chance to be picked.
 
 [Text::Homoglyph](https://github.com/MattOates/Text--Homoglyph) module does similar thing.
-
-## CONTACT
-
-You can find me on irc.freenode.net #raku channel as **bbkr**.
