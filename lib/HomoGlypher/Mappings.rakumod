@@ -1096,6 +1096,50 @@ our %accented = (
 
 # special mappings section
 
+# control have very high or perfect similarity but letters are crammed
+# and they are acronyms unlikely to be found in regular text
+our %control = (
+
+    'b' => [ '␢' ],
+
+    'NUL' => [ '␀' ],
+    'SOH' => [ '␁' ],
+    'STX' => [ '␂' ],
+    'ETX' => [ '␃' ],
+    'EOT' => [ '␄' ],
+    'ENQ' => [ '␅' ],
+    'ACK' => [ '␆' ],
+    'BEL' => [ '␇' ],
+    'BS' => [ '␈' ],
+    'HT' => [ '␉' ],
+    'LF' => [ '␊' ],
+    'VT' => [ '␋' ],
+    'FF' => [ '␌' ],
+    'CR' => [ '␍' ],
+    'SO' => [ '␎' ],
+    'SI' => [ '␏' ],
+    'DLE' => [ '␐' ],
+    'DC1' => [ '␑' ],
+    'DC2' => [ '␒' ],
+    'DC3' => [ '␓' ],
+    'DC4' => [ '␔' ],
+    'NAK' => [ '␕' ],
+    'SYN' => [ '␖' ],
+    'ETB' => [ '␗' ],
+    'CAN' => [ '␘' ],
+    'EM' => [ '␙' ],
+    'SUB' => [ '␚' ],
+    'ESC' => [ '␛' ],
+    'FS' => [ '␜' ],
+    'GS' => [ '␝' ],
+    'RS' => [ '␞' ],
+    'US' => [ '␟' ],
+    'SP' => [ '␠' ],
+    'DEL' => [ '␡' ],
+    'NL' => [ '␤' ],
+
+);
+
 # flipped mappings should have very high similarity and no accents
 # it may contain flips of other ASCII characters than alphanumerics
 our %flipped = (

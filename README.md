@@ -103,10 +103,32 @@ If you want to fine tune it then fetch merged result, tweak it and add to new `H
 
 Few ready to use mappings are provided in [HomoGlypher::Mappings](https://github.com/bbkr/HomoGlypher/blob/master/lib/HomoGlypher/Mappings.rakumod):
 
-* `@basic` - ASCII letters and digits in various scripts (armenian, cherokee, cyrillic, deseret, greek, georgian, latin, lisu, roman-numerals, etc.): `ΤꜦꜪ QՍΙᴄк вᚱՕꓪɴ ꓝᏅХ` `jսოр𐑈 օ𐐷еᎱ tᏥе ιαzႸ Ժօց` `ОᛐշʒᏎƼỼ7ꝸᏭ`.
-* `@typeface` - ASCII letters and digith with typeface (full-width, monospace, bold, italic, fraktur, bold-fraktur, script, bold-script, doublestruck) style applied: `𝗧𝕳𝓔 𝒬𝕌𝕀𝙲𝔎 𝔹𝗥ＯＷ𝓝 𝘍𝕆𝗫` `𝒿𝓾𝗺𝚙𝕤 𝔬𝘃𝘦𝓇 𝔱𝘩𝘦 𝖑𝖆𝕫𝔂 𝗱𝓸𝔤` `𝟘𝟙２𝟹４𝟻𝟼𝟽𝟠𝟡`
-* `%accented` - ASCII letters with accents: `ȚȞȆ ꝖṲÏÇꝂ ḂŔǾⱲṆ ḞṌẌ` `ĵữṁꝕṩ ǭⱱëȑ ʈẖḕ ļǟʐȳ ɗȫǵ`. Try to read it loud... Correctly :)
-* `%flipped` - ASCII letters, digits and symbols in various rotations and mirroring: `ꓕH⧢ Ꝺ⋂I𐐣ꓘ ꓭꓤOW𐐥 ꓞOX` `jᴝᴟpƨ ᴑ⋏ǝɹ ʇɥɘ ꞁɐzʎ dᴑᵷ` `0ᛚ2Ƹ4567∞9`;
+* `@basic` - ASCII letters and digits that are faked by completely different characters: `ΤꜦꜪ QՍΙᴄк вᚱՕꓪɴ ꓝᏅХ` `jսოр𐑈 օ𐐷еᎱ tᏥе ιαzႸ Ժօց` `ОᛐշʒᏎƼỼ7ꝸᏭ`. Consists of:
+    * `%armenian`
+    * `%cherokee`
+    * `%cyrillic`
+    * `%deseret`
+    * `%greek`
+    * `%georgian`
+    * `%latin`
+    * `%lisu`
+    * `%myanmar`
+    * `%roman-numerals`
+    * `%runic`
+    * `%math-symbols`
+* `@typeface` - ASCII letters and digits that have typeface styles applied, base characters are not changed: `𝗧𝕳𝓔 𝒬𝕌𝕀𝙲𝔎 𝔹𝗥ＯＷ𝓝 𝘍𝕆𝗫` `𝒿𝓾𝗺𝚙𝕤 𝔬𝘃𝘦𝓇 𝔱𝘩𝘦 𝖑𝖆𝕫𝔂 𝗱𝓸𝔤` `𝟘𝟙２𝟹４𝟻𝟼𝟽𝟠𝟡`. Consists of:
+    * `%full-width`
+    * `%monospace`
+    * `%bold`
+    * `%italic`
+    * `%fraktur`
+    * `%bold-fraktur`
+    * `%script`
+    * `%bold-script`
+    * `%doublestruck`
+* `%accented` - ASCII letters that have accents applied, base characters are not changed: `ȚȞȆ ꝖṲÏÇꝂ ḂŔǾⱲṆ ḞṌẌ` `ĵữṁꝕṩ ǭⱱëȑ ʈẖḕ ļǟʐȳ ɗȫǵ`. Try to read it loud... Correctly :)
+* `%control` - ASCII printable representations of non printable characters: `P␆ ␎ME ␖THE␏SE␞`. Have perfect similarity but letters are very crammed and those acronyms are unlikely to be found in regular language.
+* `%flipped` - ASCII letters, digits and symbols that are faked by some completely different characters in various rotations and mirroring: `ꓕH⧢ Ꝺ⋂I𐐣ꓘ ꓭꓤOW𐐥 ꓞOX` `jᴝᴟpƨ ᴑ⋏ǝɹ ʇɥɘ ꞁɐzʎ dᴑᵷ` `0ᛚ2Ƹ4567∞9`
 
 ```
 use HomoGlypher;
@@ -114,10 +136,8 @@ use HomoGlypher::Mappings;
 
 my $hg = HomoGlypher.new;
 
-$hg.add-mapping( $_ ) for @HomoGlypher::Mappings::basic;    # load basic mappings
-
-$hg.add-mapping( %HomoGlypher::Mappings::cyrillic );    # or load specific mapping,
-                                                        # check source for available names
+$hg.add-mapping( $_ ) for @HomoGlypher::Mappings::basic;    # load all basic mappings
+$hg.add-mapping( %HomoGlypher::Mappings::accented );        # load single, specific mapping
 ```
 
 I won't tell you where to get perfect, complete, ultimate mapping because homoglyphs are font-dependent and similarity is subjective. Good start point for creating your own mappings are [*_alphabet](https://en.wikipedia.org/wiki/List_of_writing_systems) and [*_numeral](https://en.wikipedia.org/wiki/List_of_numeral_systems) pages on Wikipedia. Or you can borrow mappings from some other projects like [Codebox homoglyphs](https://github.com/codebox/homoglyph), [IronGeek Homoglyph Attack Generator](https://www.irongeek.com/homoglyph-attack-generator.php) and many others.
