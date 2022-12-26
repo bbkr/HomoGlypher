@@ -1,9 +1,9 @@
 {
-    "perl" : "6.d",
     "name" : "HomoGlypher",
-    "version" : "1.8.2",
+    "version" : "1.8.3",
     "description" : "Toolset for handling similarly looking characters in strings.",
     "authors" : [ "Paweł bbkr Pabian" ],
+    "auth": "zef:bbkr",
     "provides" : {
         "HomoGlypher" : "lib/HomoGlypher.rakumod",
         "HomoGlypher::Mappings" : "lib/HomoGlypher/Mappings.rakumod"
