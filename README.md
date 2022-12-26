@@ -1,6 +1,6 @@
 # Homoglyph toolset for [Raku](https://www.raku.org) language
 
-![test](https://github.com/bbkr/HomoGlypher/workflows/test/badge.svg)
+[![.github/workflows/test.yml](https://github.com/bbkr/HomoGlypher/actions/workflows/test.yml/badge.svg)](https://github.com/bbkr/HomoGlypher/actions/workflows/test.yml)
 
 [Homoglyph](https://en.wikipedia.org/wiki/Homoglyph) is set of one or more graphemes that has identical or very similar look to some other set of graphemes.
 
