@@ -109,6 +109,7 @@ Few ready to use mappings are provided in [HomoGlypher::Mappings](https://github
     * `%cyrillic`
     * `%deseret`
     * `%greek`
+    * `%greek-mathematical-typeface`
     * `%georgian`
     * `%latin`
     * `%lisu`

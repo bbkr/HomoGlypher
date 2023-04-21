@@ -1,6 +1,6 @@
 {
     "name" : "HomoGlypher",
-    "version" : "1.8.5",
+    "version" : "1.8.6",
     "description" : "Toolset for handling similarly looking characters in strings.",
     "authors" : [ "Paweł bbkr Pabian" ],
     "auth": "zef:bbkr",
