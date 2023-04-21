@@ -118,29 +118,25 @@ Few ready to use mappings are provided in [HomoGlypher::Mappings](https://github
     * `%runic`
     * `%math-symbols`
 * `@typeface` - ASCII letters and digits that have typeface styles applied, base characters are not changed: `𝗧𝕳𝓔 𝒬𝕌𝕀𝙲𝔎 𝔹𝗥ＯＷ𝓝 𝘍𝕆𝗫` `𝒿𝓾𝗺𝚙𝕤 𝔬𝘃𝘦𝓇 𝔱𝘩𝘦 𝖑𝖆𝕫𝔂 𝗱𝓸𝔤` `𝟘𝟙２𝟹４𝟻𝟼𝟽𝟠𝟡`. Consists of:
-    * `%full-width`
-    * `%monospace`
+    * `%ballot`
+    * `%ballot-bold-script`
+    * `%ballot-script`
     * `%bold`
-    * `%italic`
-    * `%fraktur`
     * `%bold-fraktur`
-    * `%script`
+    * `%bold-italic`
     * `%bold-script`
     * `%doublestruck`
-* `@mathematical-typeface` - ASCII letters and digits that have mathematical typeface styles applied, base characters are not changed: `𝐓𝙃𝖤 𝔔𝑈𝕴𝐶𝒦 𝐁𝕽𝑶𝑾𝙉 𝐅𝘖𝑿 𝙟𝗎𝒎𝖕𝑠 𝓸𝐯𝘦𝙧 𝑡𝒽𝙚 𝖑𝗮𝑧𝔂 𝘥𝔬𝒈 𝟘𝟣𝟸𝟛𝟜𝟻𝟼𝟕𝟖𝟗`. Consists of:
-    * `%mathematical-bold`
-    * `%mathematical-italic`
-    * `%mathematical-bold-italic`
-    * `%mathematical-script`
-    * `%mathematical-bold-script`
-    * `%mathematical-fraktur`
-    * `%mathematical-doublestruck`
-    * `%mathematical-bold-fraktur`
-    * `%mathematical-sansserif`
-    * `%mathematical-sansserif-bold`
-    * `%mathematical-sansserif-italic`
-    * `%mathematical-sansserif-bold-italic`
-    * `%mathematical-monospace`
+    * `%doublestruck-italic`
+    * `%fraktur`
+    * `%fullwidth`
+    * `%heavy-ballot`
+    * `%italic`
+    * `%monospace`
+    * `%sansserif`
+    * `%sansserif-bold`
+    * `%sansserif-bold-italic`
+    * `%sansserif-italic`
+    * `%script`
 * `%accented` - ASCII letters that have accents applied, base characters are not changed: `ȚȞȆ ꝖṲÏÇꝂ ḂŔǾⱲṆ ḞṌẌ` `ĵữṁꝕṩ ǭⱱëȑ ʈẖḕ ļǟʐȳ ɗȫǵ`. Try to read it loud... Correctly :)
 * `%control` - ASCII printable representations of non printable characters: `P␆ ␎ME ␖THE␏SE␞`. Have perfect similarity but letters are very crammed and those acronyms are unlikely to be found in regular language.
 * `%flipped` - ASCII letters, digits and symbols that are faked by some completely different characters in various rotations and mirroring: `ꓕH⧢ Ꝺ⋂I𐐣ꓘ ꓭꓤOW𐐥 ꓞOX` `jᴝᴟpƨ ᴑ⋏ǝɹ ʇɥɘ ꞁɐzʎ dᴑᵷ` `0ᛚ2Ƹ4567∞9`
